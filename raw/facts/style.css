@@ -1,0 +1,82 @@
+*, html {
+    margin: 0 5px;
+}
+
+body {
+    background: black;
+    font-family: Lucida Console, sans-serif;
+    height: 100vh;
+    width: 100vw;
+    margin: auto;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 25px 0;
+}
+
+li {
+    color: #ccc;
+    margin: 2.5px 0;
+    cursor: pointer;
+    color: #ccc;
+    outline: 0;
+}
+
+li a {
+    text-decoration: none;
+    color: #ccc;
+    display: inline-block;
+    padding: 2.5px 0 2.5px 40px;
+}
+
+li:nth-child(1), li:nth-child(4) {
+    margin-bottom: 25px;
+}
+
+li:last-child {
+    margin-top: 25px;
+}
+
+.active a {
+    background: #ccc;
+    color: #000;
+}
+
+main p {
+    color: #ccc;
+    margin: 5px 0;
+}
+
+main b {
+    font-weight: normal;
+    color: white;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+footer {
+    margin-top: 30px;
+}
+
+header, footer {
+    background: #ccc;
+    position: relative;
+    padding: 2.5px 0;
+}
+
+footer p:nth-child(2) {
+    position: absolute;
+    right: 0;
+    top: 2.5px;
+}
