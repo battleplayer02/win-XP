@@ -1,0 +1,242 @@
+/* GENERAL */
+
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    position: absolute;
+    background: #282828;
+    overflow: hidden;
+}
+
+.scanlines {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 300;
+    opacity: .6;
+    -webkit-animation: opacity 3s linear infinite;
+    animation: opacity 3s linear infinite;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.5) 51%);
+    background-size: 100% 4px;
+    -webkit-animation: scanlines .2s linear infinite;
+    animation: scanlines .2s linear infinite;
+}
+
+@-webkit-keyframes scanlines {
+    from {
+        background: linear-gradient(to bottom, transparent 50%, rgba(106, 101, 109, 0.4) 51%);
+        background-size: 100% 4px;
+    }
+    to {
+        background: linear-gradient(to bottom, rgba(106, 101, 109, 0.4) 50%, transparent 51%);
+        background-size: 100% 4px;
+    }
+}
+
+@keyframes scanlines {
+    from {
+        background: linear-gradient(to bottom, transparent 50%, rgba(106, 101, 109, 0.4) 51%);
+        background-size: 100% 4px;
+    }
+    to {
+        background: linear-gradient(to bottom, rgba(106, 101, 109, 0.4) 50%, transparent 51%);
+        background-size: 100% 4px;
+    }
+}
+
+.intro-wrap {
+    position: absolute;
+    font-family: 'Press Start 2P', cursive;
+    color: #66FF66;
+    font-size: 2rem;
+}
+
+.intro-wrap .fullname {
+    color: #66FF66;
+    position: relative;
+    left: 2vw;
+    top: 2vw;
+}
+
+.intro-wrap .fullname .char {
+    -webkit-animation: type 1.2s infinite alternate;
+    animation: type 1.2s infinite alternate;
+    -webkit-animation-delay: calc(60ms * var(--char-index));
+    animation-delay: calc(60ms * var(--char-index));
+}
+
+.intro-wrap .console-type {
+    padding-left: 2vw;
+    padding-top: 15vh;
+    font-size: 1rem;
+}
+
+@-webkit-keyframes opacity {
+    0% {
+        opacity: .6;
+    }
+    20% {
+        opacity: .3;
+    }
+    35% {
+        opacity: .5;
+    }
+    50% {
+        opacity: .8;
+    }
+    60% {
+        opacity: .4;
+    }
+    80% {
+        opacity: .7;
+    }
+    100% {
+        opacity: .6;
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: .6;
+    }
+    20% {
+        opacity: .3;
+    }
+    35% {
+        opacity: .5;
+    }
+    50% {
+        opacity: .8;
+    }
+    60% {
+        opacity: .4;
+    }
+    80% {
+        opacity: .7;
+    }
+    100% {
+        opacity: .6;
+    }
+}
+
+@-webkit-keyframes type {
+    0%, 19% {
+        opacity: 0;
+    }
+    20%, 100% {
+        opacity: 1;
+    }
+}
+
+@keyframes type {
+    0%, 19% {
+        opacity: 0;
+    }
+    20%, 100% {
+        opacity: 1;
+    }
+}
+
+/* CONSOLE TYPING */
+
+#console-type h1, #console-type h2 {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 50rem;
+    /* width of biggest command */
+}
+
+#console-type .input0 {
+    position: absolute;
+    opacity: 0;
+}
+
+#console-type .output {
+    height: 1.2rem;
+    opacity: 1;
+}
+
+#console-type .output4 {
+    animation: enter 1500ms;
+    -webkit-animation: enter 1500ms;
+}
+
+@keyframes enter {
+    0% {
+        opacity: 0;
+        position: absolute;
+    }
+    99% {
+        opacity: 0;
+        position: absolute;
+    }
+    100% {
+        opacity: 1;
+        position: relative;
+    }
+}
+
+@keyframes blink {
+    to {
+        opacity: 0;
+    }
+}
+
+.cursor {
+    color: #66FF66;
+    animation: blink 1s infinite;
+}
+
+.cursor:before {
+    content: "|";
+    color: #66FF66;
+}
+
+.cursor:after {
+    color: #66FF66;
+    animation: blink 1s infinite;
+    content: "";
+}
+
+input, textarea {
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* COMMAND PROMPT */
+
+.console {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-top: .2rem;
+    animation: enter 2s;
+    -webkit-animation: enter 2s;
+    margin-bottom: 2vw;
+}
+
+.command {
+    background-color: transparent;
+    color: #66FF66;
+    border: none;
+    width: 90vw;
+    outline: none;
+    box-shadow: none;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+}
+
+.hide {
+    display: none;
+}

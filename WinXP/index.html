@@ -8,6 +8,7 @@
     <title>Windows XP By Himanshu</title>
     <link rel="icon" href="./images/logo.svg" type="image/icon type">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://use.fontawesome.com/aac5c45839.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
@@ -49,6 +50,12 @@
     </section>
     <!-- Boot Animation End   -->
 
+    <!-- Welcome Screen Animation -->
+    <div class="welcome">
+        <div>welcome</div>
+    </div>
+    <!-- Welcome Screen Animation -->
+
     <!-- Xp Loading Animation Start -->
     <section class="xp__animation">
         <div class="centred">
@@ -73,9 +80,12 @@
     <!-- Main Section Start -->
     <section class="main">
 
+        <div id="app" class="hidden"></div>
+
         <!-- Floating Window Start -->
         <div class="floating__window">
-            <div class="window">
+
+            <div class="window maximized">
                 <div class="title-bar">
                     <div><img src="images/start_menu_images/notepad.png"> ReadME.txt</div>
                     <div class="controls">
@@ -91,10 +101,91 @@
                     <span>View</span>
                     <span>Help</span>
                 </div>
-                <textarea></textarea>
+                <textarea>
+Hello World!
+
+Features:
+- Desktop icons are clickable. Double clicking them will open the aaplication;
+- Time in system-tray is your system's time.
+- This window is draggable, closable, minimizable and maximizable. Try it.
+____________________________________________________________________________
+
+The code is on github feel free to play with it. Star the repository if you liked this. Contributions to this repository are welcome and appreciated.
+____________________________________________________________________________
+
+Do follow me on Github (@battleplayer02) and Linkedin (@hshekhar02).
+                </textarea>
             </div>
-
-
+            <div class="window hidden wordpad" onload="enableEditMode();">
+                <div class="title-bar">
+                    <div><img src="images/start_menu_images/notepad.png"><span class="nameofdoc"></span></div>
+                    <div class="controls">
+                        <button class="cls"></button>
+                        <button class="max"></button>
+                        <button class="min"></button>
+                    </div>
+                </div>
+                <div class="menu-bar">
+                    <button onclick="execCmd('bold');"><i class="fa fa-bold"></i></button>
+                    <button onclick="execCmd('italic');"><i class="fa fa-italic"></i></button>
+                    <button onclick="execCmd('underline');"><i class="fa fa-underline"></i></button>
+                    <button onclick="execCmd('strikeThrough');"><i class="fa fa-strikethrough"></i></button>
+                    <button onclick="execCmd('justifyLeft');"><i class="fa fa-align-left"></i></button>
+                    <button onclick="execCmd('justifyCenter');"><i class="fa fa-align-center"></i></button>
+                    <button onclick="execCmd('justifyRight');"><i class="fa fa-align-right"></i></button>
+                    <button onclick="execCmd('justifyFull');"><i class="fa fa-align-justify"></i></button>
+                    <button onclick="execCmd('cut');"><i class="fa fa-cut"></i></button>
+                    <button onclick="execCmd('copy');"><i class="fa fa-copy"></i></button>
+                    <button onclick="execCmd('indent');"><i class="fa fa-indent"></i></button>
+                    <button onclick="execCmd('outdent');"><i class="fa fa-dedent"></i></button>
+                    <button onclick="execCmd('subscript');"><i class="fa fa-subscript"></i></button>
+                    <button onclick="execCmd('superscript');"><i class="fa fa-superscript"></i></button>
+                    <button onclick="execCmd('undo');"><i class="fa fa-undo"></i></button>
+                    <button onclick="execCmd('redo');"><i class="fa fa-repeat"></i></button>
+                    <button onclick="execCmd('insertUnorderedList');"><i class="fa fa-list-ul"></i></button>
+                    <button onclick="execCmd('insertOrderedList');"><i class="fa fa-list-ol"></i></button>
+                    <button onclick="execCmd('insertParagraph');"><i class="fa fa-paragraph"></i></button>
+                    <select onchange="execCommandWithArg('formatBlock', this.value);">
+                        <option value="H1">H1</option>
+                        <option value="H2">H2</option>
+                        <option value="H3">H3</option>
+                        <option value="H4">H4</option>
+                        <option value="H5">H5</option>
+                        <option value="H6">H6</option>
+                    </select>
+                    <button onclick="execCmd('insertHorizontalRule');">HR</button>
+                    <button onclick="execCommandWithArg('createLink', prompt('Enter a URL', 'http://'));"><i
+                            class="fa fa-link"></i></button>
+                    <button onclick="execCmd('unlink');"><i class="fa fa-unlink"></i></button>
+                    <button onclick="toggleSource();"><i class="fa fa-code"></i></button>
+                    <button onclick="toggleEdit();">Toggle Edit</button>
+                    <br />
+                    <select onchange="execCommandWithArg('fontName', this.value);">
+                        <option value="Arial">Arial</option>
+                        <option value="Comic Sans MS">Comic Sans MS</option>
+                        <option value="Courier">Courier</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Tahoma">Tahoma</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Verdana">Verdana</option>
+                    </select>
+                    <select onchange="execCommandWithArg('fontSize', this.value);">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                    </select>
+                    Fore Color: <input type="color" onchange="execCommandWithArg('foreColor', this.value);">
+                    Background: <input type="color" onchange="execCommandWithArg('hiliteColor', this.value);">
+                    <button onclick="execCommandWithArg('insertImage', prompt('Enter the image URL', ''));"><i
+                            class="fa fa-file-image-o"></i></button>
+                    <button onclick="execCmd('selectAll');">Select All</button>
+                </div>
+                <iframe name="richTextField"></iframe>
+            </div>
 
         </div>
         <!-- Floating Window End -->
@@ -118,7 +209,7 @@
                 Paste Shortcut
             </div>
             <hr>
-            <div class="context__item">
+            <div class="context__item" id="create_text_document">
                 New Text Document
             </div>
             <div class="context__item">
@@ -231,89 +322,72 @@
                                                 <div class="all__programs">
 
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAKUSURBVDhPjZJrSJNhFMffDxlu6sxCRGdbm0Mr7DLf0eVDloqal6APZWVkl4GUSkjLXHkt1MpLS5HajIIiDMSGeCkNl2aMWbrKmjI3zVlWoIaIXT7+6zkage6DB/5w/u9znt97nuc83L/oN/Do00fg1a2tsNRuxsLn5QXbvDh6dBvgE8Qf8w1UbhSuVfovlC6N/5sNiwSYyhV4dlWGpyUStF0JRktxEJoKAiAK5sMJqlCs5Fjb+F0N/LixVG7CmOcPURCv9xIrtxGEnRlTpcDXYphrwt2quyoMnddD0F4qRetlMXXCxCAcuzC4LqGxTIVVGUZwafVuFZDZiNjSdlKxVoNsNQ/vv51w7A+wnYWhKBrqB0PIbR5xq7zWUZR0jKGy6xPqms04nnkQPmJVG8duG/3p0BdGwdJnRVIdhwqLFjOTdsw1lsN08gRm7S/IPzI04P5tE+VVRUfYlJ5z7HwMUHtxFwFyjBz05iwqmn5cA1t2GmYHO8m/a0rHTV0v5ZWFhxmgi2OjYgBdzg4CvOy2YtRuo6Kh9wOwvh7A5PgAebY2aBukvKLg0DyAzZkByrN5Avzq08AxXE9FY99cSH/ihPOzk/y4/hqmG6rnAfkpEIlVJnpM7JGUZW0hQIahFh/e6qiox+5ApHU/LCMfySvTjZip1lC+N1Xz00+yvYMAokBVqkAeb2aAiV41ppz3qKjlzTDOtH6B3eUgP5GvxmTLXcoTj+bMSTbFPySAV/BOhUdYygUGYIvLUXKa9rtMmXiHANzqBC/P0GTeI/SATiBP6PWUxzkEsrgxgSzW5U5CefyIKCTaLI/YVzIP4PgV3ooEP8G6KJVQGnVKKNl9TiiNzBVIIrXu5C3dc943JOb0mvVJMX8AhexLz8UlK5AAAAAASUVORK5CYII="
-                                                            alt="">
+                                                            src="images/all_programs/accessories.png" alt="">
                                                         <div class="program__text">Accessibility</div>
                                                         <div class="program__arrow"></div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAKUSURBVDhPjZJrSJNhFMffDxlu6sxCRGdbm0Mr7DLf0eVDloqal6APZWVkl4GUSkjLXHkt1MpLS5HajIIiDMSGeCkNl2aMWbrKmjI3zVlWoIaIXT7+6zkage6DB/5w/u9znt97nuc83L/oN/Do00fg1a2tsNRuxsLn5QXbvDh6dBvgE8Qf8w1UbhSuVfovlC6N/5sNiwSYyhV4dlWGpyUStF0JRktxEJoKAiAK5sMJqlCs5Fjb+F0N/LixVG7CmOcPURCv9xIrtxGEnRlTpcDXYphrwt2quyoMnddD0F4qRetlMXXCxCAcuzC4LqGxTIVVGUZwafVuFZDZiNjSdlKxVoNsNQ/vv51w7A+wnYWhKBrqB0PIbR5xq7zWUZR0jKGy6xPqms04nnkQPmJVG8duG/3p0BdGwdJnRVIdhwqLFjOTdsw1lsN08gRm7S/IPzI04P5tE+VVRUfYlJ5z7HwMUHtxFwFyjBz05iwqmn5cA1t2GmYHO8m/a0rHTV0v5ZWFhxmgi2OjYgBdzg4CvOy2YtRuo6Kh9wOwvh7A5PgAebY2aBukvKLg0DyAzZkByrN5Avzq08AxXE9FY99cSH/ihPOzk/y4/hqmG6rnAfkpEIlVJnpM7JGUZW0hQIahFh/e6qiox+5ApHU/LCMfySvTjZip1lC+N1Xz00+yvYMAokBVqkAeb2aAiV41ppz3qKjlzTDOtH6B3eUgP5GvxmTLXcoTj+bMSTbFPySAV/BOhUdYygUGYIvLUXKa9rtMmXiHANzqBC/P0GTeI/SATiBP6PWUxzkEsrgxgSzW5U5CefyIKCTaLI/YVzIP4PgV3ooEP8G6KJVQGnVKKNl9TiiNzBVIIrXu5C3dc943JOb0mvVJMX8AhexLz8UlK5AAAAAASUVORK5CYII="
-                                                            alt="">
+                                                            src="images/all_programs/accessories.png" alt="">
                                                         <div class="program__text">Communications</div>
                                                         <div class="program__arrow"></div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAKUSURBVDhPjZJrSJNhFMffDxlu6sxCRGdbm0Mr7DLf0eVDloqal6APZWVkl4GUSkjLXHkt1MpLS5HajIIiDMSGeCkNl2aMWbrKmjI3zVlWoIaIXT7+6zkage6DB/5w/u9znt97nuc83L/oN/Do00fg1a2tsNRuxsLn5QXbvDh6dBvgE8Qf8w1UbhSuVfovlC6N/5sNiwSYyhV4dlWGpyUStF0JRktxEJoKAiAK5sMJqlCs5Fjb+F0N/LixVG7CmOcPURCv9xIrtxGEnRlTpcDXYphrwt2quyoMnddD0F4qRetlMXXCxCAcuzC4LqGxTIVVGUZwafVuFZDZiNjSdlKxVoNsNQ/vv51w7A+wnYWhKBrqB0PIbR5xq7zWUZR0jKGy6xPqms04nnkQPmJVG8duG/3p0BdGwdJnRVIdhwqLFjOTdsw1lsN08gRm7S/IPzI04P5tE+VVRUfYlJ5z7HwMUHtxFwFyjBz05iwqmn5cA1t2GmYHO8m/a0rHTV0v5ZWFhxmgi2OjYgBdzg4CvOy2YtRuo6Kh9wOwvh7A5PgAebY2aBukvKLg0DyAzZkByrN5Avzq08AxXE9FY99cSH/ihPOzk/y4/hqmG6rnAfkpEIlVJnpM7JGUZW0hQIahFh/e6qiox+5ApHU/LCMfySvTjZip1lC+N1Xz00+yvYMAokBVqkAeb2aAiV41ppz3qKjlzTDOtH6B3eUgP5GvxmTLXcoTj+bMSTbFPySAV/BOhUdYygUGYIvLUXKa9rtMmXiHANzqBC/P0GTeI/SATiBP6PWUxzkEsrgxgSzW5U5CefyIKCTaLI/YVzIP4PgV3ooEP8G6KJVQGnVKKNl9TiiNzBVIIrXu5C3dc943JOb0mvVJMX8AhexLz8UlK5AAAAAASUVORK5CYII="
-                                                            alt="">
+                                                            src="images/all_programs/accessories.png" alt="">
                                                         <div class="program__text">Entertainment</div>
                                                         <div class="program__arrow"></div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAKUSURBVDhPjZJrSJNhFMffDxlu6sxCRGdbm0Mr7DLf0eVDloqal6APZWVkl4GUSkjLXHkt1MpLS5HajIIiDMSGeCkNl2aMWbrKmjI3zVlWoIaIXT7+6zkage6DB/5w/u9znt97nuc83L/oN/Do00fg1a2tsNRuxsLn5QXbvDh6dBvgE8Qf8w1UbhSuVfovlC6N/5sNiwSYyhV4dlWGpyUStF0JRktxEJoKAiAK5sMJqlCs5Fjb+F0N/LixVG7CmOcPURCv9xIrtxGEnRlTpcDXYphrwt2quyoMnddD0F4qRetlMXXCxCAcuzC4LqGxTIVVGUZwafVuFZDZiNjSdlKxVoNsNQ/vv51w7A+wnYWhKBrqB0PIbR5xq7zWUZR0jKGy6xPqms04nnkQPmJVG8duG/3p0BdGwdJnRVIdhwqLFjOTdsw1lsN08gRm7S/IPzI04P5tE+VVRUfYlJ5z7HwMUHtxFwFyjBz05iwqmn5cA1t2GmYHO8m/a0rHTV0v5ZWFhxmgi2OjYgBdzg4CvOy2YtRuo6Kh9wOwvh7A5PgAebY2aBukvKLg0DyAzZkByrN5Avzq08AxXE9FY99cSH/ihPOzk/y4/hqmG6rnAfkpEIlVJnpM7JGUZW0hQIahFh/e6qiox+5ApHU/LCMfySvTjZip1lC+N1Xz00+yvYMAokBVqkAeb2aAiV41ppz3qKjlzTDOtH6B3eUgP5GvxmTLXcoTj+bMSTbFPySAV/BOhUdYygUGYIvLUXKa9rtMmXiHANzqBC/P0GTeI/SATiBP6PWUxzkEsrgxgSzW5U5CefyIKCTaLI/YVzIP4PgV3ooEP8G6KJVQGnVKKNl9TiiNzBVIIrXu5C3dc943JOb0mvVJMX8AhexLz8UlK5AAAAAASUVORK5CYII="
-                                                            alt="">
+                                                            src="images/all_programs/accessories.png" alt="">
                                                         <div class="program__text">System Tools</div>
                                                         <div class="program__arrow"></div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAM+SURBVDhPjVNtTFNJFH10XTWoJVapKK1QWgmlrRqn7XvFAqNlK+1ajST9sz+MGDUYTYyJ3yb6zOoPEwzRjVGiYvxA3M0SUMMGCdFd1EgTNquCMQbqB8YPoKCCaEHa40x5Yf96kpvJ3HvOyZ2ZO8J3ICkYDP7g8/mmeL3eaYFAIHkTIT/yfKIqy4JKpnQST1K2yrKsUorjBEFW3a/cOAf3DuBV48FfKf1pscfjy2WGqdxU6KkKSmu8Xi0T6xwOmuZyrdBQGpzOixZLcPLQw+syOv4AN0DLBviLiw8RJy2T3MtESlfOFnDSkSh21Fc2PL525saiJUUriOQVT5f6aDx8H3h2BxOoL0HzxSM9WWZ3jXlx/gZJKrIKI2eXIzygEDjCbUDTOTxtvo7n/VHE4kqe41E14rVrkJYltRty3cdtxLM6YdAQeom3Q8A7FiNjwOveIVS3DiD0juU+AcOjisHYCHDOhaqjez7PNUp/LbAW7BV667bWcpPB6DjxE+N8HonhUksf6rrieMVMx2KKAcedcuDPX6A1ONsN5vwa4cH5zYWjJwrR+iKK7kEm/grEWdttXYOobB1GWw/wRcklMNwPHF+EkqLCfr1JCgkBQpJ5BzzaI0Anuw9uws++43wYdZ1xPGH5j6zDiU7OBlBe5o+mG51dAmHvH7mw/tiHQxQ3n7P7C4/iv4EY3gzHcbUlglOhKP7pBt5/UcRX9gM3DsJgzovoTcxAFgRVqHqnDYdF/H6rk50baHwRQ2skjsd9Mcj1Edx8CfTyFmr2o3zbujGN3tGnzRT/zTRJTXzUktgQTX1TveU3/JyKiTjsRNXtAew6chsN9XcT+5X+YJSJu+caXX9nmZdW5OQu3Z4YVj7rHo9nlkio22TO2122yttYUVrSyY24AV/V6eS1ep69IzVDrDXk5u9buIQWE+KxJgwY+IeZTNko22xukpEt+ucbnWtNOeIeQ7Z0QpvhuJyis19Rp9srUjPF0mxLvtPh8KcRsilZ0SeQxC/UYqHTc3Kcs6zWAj0hBTazOa8gzWj3zdTZ/TPmEbdWT4xZpCiFc7lmXPo/lF8oqziBPzFbU3Q6l0bNQqMR1YLJNIXXx3mC8A3acf+vowSAHwAAAABJRU5ErkJggg=="
-                                                            alt="">
+                                                            src="images/all_programs/address_bok.png" alt="">
                                                         <div class="program__text">Address Book</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAFYSURBVDhPY6AYMFmlM8l4TeVV8J7FJ+89EyeW85oBxvJAdZLeM3kZFR2YwQbwunYt18vc/s4we/drg6xdr3Bhs/y9r0zz9r4yL9j32jp7wxsJz9aNnGruWgzCZTffivd8+C/e9RYnFut8+z9686///mt//4/f/OP/tL7F/y1jFv5nVPCYyOBSuuCtYVTBf+PYMrzYMr7svwUQg2jHuJz/WgEt/9lVfVYwOHjFvQX65D+pWEQz8D+vTvAyBlvPeLABHh4e/2EAxEZWDALIfBAW1gAaoA00wMo1GmwACIA0wgyCiSHLwTSDMFYDkBUgY2RDYRhuAMwLIIDLBcjyMD6GATCNIICsEIaRDQZhDANIxXADHL0TyTJAVDMIZMByBmP/+lcKpqH/lS2iiMYqFhH/5e1K/nOp+yxlYNfwC+FT96/lVfOvJh4H1PCqetZyqrp4A11DCWBgAACHC2g8GJ3JyAAAAABJRU5ErkJggg=="
-                                                            alt="">
+                                                            src="images/all_programs/cmd.png" alt="">
                                                         <div class="program__text">Command Prompt</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAALrSURBVDhPrdBvSNN5HMDxZWjXwUWUF3V0dRURUWGQ9yjIlVe6yv5nFFR0J2KeYN5FUJmP1ErT0sqsXLq0Ule5hrXltLY0a7b5Z7qSbTY3hxN1XmYU/cH3/eD3g7Ke9obvky+fF3y/H9l3Ke3Edb+u7C/ys09QqUwg72Q2N87Hk3+qAHVRCkWXDOQc3vDyh2DZXImMLetiFxWqC9RY3Rh0xdQ8c1FeUYLa4ueesY5K+xuSj+cPB4eEyCUytuxb3eh9r6kf+oC+9w0qbx/nXH0Uukc43fWWVNsIu270fwyds3inRMaWoXZw1h2g2O2nwDVIut1LWruPo61+Upp7iWvsJ84wyrJNCYUSGVuxzkZ6e4AznQEy24c4YOkmscnH3+b/2Ns4QEytny26UXaevu8QxmeI6ou0JgsZ9h4OWgb51zLM7gYv200eYo2DbHwwhLzaj+KmsAf98KfQ2Qu3S+xzugYLV9zd7DG9Yk9DgHV1XqJqfKzT97Pmrp8ItYdoZS8HjaP8vi25SCBBopS6W29BO9DGDsMAWwwBVlU7iNS4WF/VQ5TayQqVHcU5Jwe0w2zN0NgF8osope4IX2h5ZyPxYS9rb3v5o7KdVddbUJQ9R3HVTkShFcXJVhKvuEgodbyf8uv8GImKaUxWbB/MZDZ7WHvNxcqSJ6xWNqG4bCW64CkRpx4RnVrP/pxn/FPeR9iGuLMSFdMYrTg+tlHqfsGmq52szKtDnmsgKqeRyJzHyLOa2JxlJ7nESdK1LsJi4u4L7EdRC902Wmh9Z8YU6GCfxisszEysuo2kWidHmp2kPe8gfF+mc2bY8txJ02cljQsKihRYsKiFquuFF9CC+e1jNP0vyPM9RDnwhNIeF4UdnaRqO5k6J0orjP4kiq9S6W1UeZwom16SXtVGfG7tyJqEy54l8hTTtHnrVRMnLzo2LmiCQhgdL4qvWrr8z4rfwuNv/jwvuiBk0oJDMtmEjcJ1uHBChfP5qd8kk/0PrH7NAleFCPMAAAAASUVORK5CYII="
-                                                            alt="">
+                                                            src="images/all_programs/notepad.png" alt="">
                                                         <div class="program__text">Notepad</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAANiSURBVDhPY4CBP1vTu64W6/79t680DipEGjieJP1wo6fo/ysl2r+MjKwmWJvbO7pZuYkZGxtzOTg4cKzesN+yecLeL3JajtrSKg4yUkBxoDYmiG4gaLOWXD9ZV+D/VFvFf4pqZgtyY3yyfh/2eqVvZqOmY+ome/HigwMz5pz47xU98ZG0qoOPlLaNnIqKJztUOwT0lvb8SY2t+yulaLZyamPBjK/nlv3TMrAJ1TZ2sNl14MLSWQuv/XeNm/ZaUtWhWkLN3lRU24EHqhUCJu999il40r0/EkoWa2f3Ba+/uSrgv6a+TY2uiUvknb2brx+au+qvup7bdqALWmRUHc3V1a15oVohoGPB0RvR0+79C08suHJqk9zdPX28/5OK6/c0Z8TN/RMj9X+7nc5TXU2bdUoqNlmK6tbqCgoOHFCtDAzhyeVSk5aeeppUc/1/R9+yv9/PCfxZ1K72v3/3oz+vVtX+/mHG8L9VTuWhpor5Qm0V8xBjTVtJBwYHFqh2Bob9Jy8EtW3ec96zY9J/3/yo/x8Psv2f26L3v2DVk//Pavz/P9Hj/t+fkvNGW8Vijqm6pYeZhpkwA0MDIhY6piww2vXy0BvP3Zb/FdNY/99axvC/t9rqf1TXhf/3Yq3+PyuL/19U3flcW9t+qoWJi4OLSyg/igGRScVyB89d3DL7wtL/cYuz/5/c6/V/9drS/8v3n/7/vsbp/4f1M/7besZc1zJyb7WyDzJ1CA0FxsB/Rqh2CNh+4PjkBcdX/PebEvJ/8xyJ/xs2Zfy/tb39/998xf83z576J6lmd1DV2DPXzDlczSEhARSAqAZ0zFwZO+nAkf/+04L+T2oT+z9rQcb/B33B/x/mu/6fsWrHDyl1+43Khh4RhtYRUg4ODYgAhIHooh6r2vX7PobNjv1f2aD8f+PskP8/yrT+r2ru+Z/XMv29ooHbAm1LPw9L92QhhgYk/8OAW0SRfPPCDfMi52f+T+q2+39gbtb/T5nq/+ct3f7X3C3qipa5X5uxY6y5tV8SL8N/NP/DQFpZe0DBrIZr1TtW/d937Pb/4/Pn/IvKbniioOu6Ut8mJNHKM03Z0zMXNQ8gAzO3WEUNa78gGW2HdmEliyWCchYrxVXtZqoae+UZO0aY23hnCoaGrmKGqGZgAAAFjGphxzjy1wAAAABJRU5ErkJggg=="
-                                                            alt="">
+                                                            src="images/all_programs/paint.png" alt="">
                                                         <div class="program__text">Paint</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAMQSURBVDhPbZPtT5NXGIe7RROmcx+Mf8I++Mk457Jl/8C+qMuSqUs0ijpdNsxe6pjMyABtJHUIBqHWFmhphUlH35CWFtGHKlhQqcJslYJA6UYoxsImAkrd5f2URJe4J7lynpffuc6575xHA2jkerPGXLPa2Tno84UfhFyhobirazTd2D0+W3kxiis2TXtygZvPocoZSUt+vbBGWK5OfkNYZjzf2y0yxhZhRMY/1ft/ISljfAHa+h/TNQZXBtJPJb9LWCusELKCHL2hI5yUWV0yo9g6xu6TCXaWjrPl6AhbC++zWTfHp4XD1LdGn0u+QPhAeEfIClaWG9uV5AQ4+56wRZdmmwF2nIX9FjjYANomGc/N0ByMqYIS4WPhlaDMELgcly26bs5RUDfJaQX0LRmKbAlKrA/QO1KYlVlaOgcXJP+64NRZ/+U7cegcBYvyN2dcCeqVqexzeEre375LVyQmJQzOS75I+Eh4Jfi1qlXpvSvNugf+yAz1wWECAxm84WHMoXlSjn08tBVQG0jOSr5Q+FB4KVhRXdvmCN2CdtmFxR2jLw266uv4B6SU5mn6v1lLMP8Tfrs2NC35I4LaxFXCkuCcxW8K9kDHMOQVd5B37AZe2dEXeefxRsHgG8LaD3ZP5JHkDwsbhZeCt8z1/ipvKINPSnCEJnCEkzg6H5N4BqbWBJ7wHMaLE5gv9MxIXhW8L7wtLAkqjB6vR1mkRVap88RRRuH74wH09oeU2sf44UQPBdUj1P7eq57E1wWVJnfTheAzgtKDg7qrfHnkGpfGIfeQlbb70HR1HJuSotp2/f8FBnNLg803j/sONIcm8fZNUm6LIRWgqxnA6puixDKBsSGs9iBf2CD8V+C217j/yZZQ2RCl7gocN0XJ/ekSpz0Zfiy/x97iGPoq71+S/1ZYJ6wUlgRnTK7GOjl5HfIn5VdE0JbFKXMusv9ogFytPfNzkSH1dV5+v2RLhe3Cu0KOkBXkON3tJz/ba0Sr72aPtnHx8C+VqQNffffHpk2bW+V7haAeX3Xlz4X3hNUajWbZC9AyJK8m7y1mAAAAAElFTkSuQmCC"
-                                                            alt="">
+                                                            src="images/all_programs/calculator.png" alt="">
                                                         <div class="program__text">Calculator</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAMVSURBVDhPbZJrSFNxGMYPFUF0FetDBVkZkUlWiyJC6kOsm9ltJmLTYpSV3SQoJCqKIKmktDRCKiv8oIjYhayVQtqcbu5mLncxt7OjqJlzO7u1nNvTe2aUSC/84Jy9z/Oc9/3vz0wsvdVd1/6Nh6HLhXaBby565tGk5Z5Se+aY6j9FImkHGXsH/AiPhjG+wqFRsH1efOnmcfbC9a0knzLm+lMaqzur0+6OikOE0gtUdkfwSD+KYhVQZQSCEaE7CqOdh3jngb1kmzrmpjLaeKEL3Xcg7zVQUDsEOzcEn/sH2F4e+RUBpBZGoLYJqjBN4gbZNhCThJ0bXXwAXYPAztuAtEBQDdMaETyX99PzCCK/vEg+z2J9Xh+GaTq23yesUkcBcX+/nvvIj5U5HM7caUXPoBv7r5rArGnA1cemaP9YoRVzJe24WMYhEo6gXmnhKSCNMbE8+pwhiHK7sO5EB1Zkq7EkQ4X5aSrMSWmE0sBFA7bkGbA4U4uNuTqE6FA7bK4IBZQwFocHarMXSw9pIcrRY/VRDRKPaBB3UIHKt/qo+dJjFgskLfS7FgnZSjh5P77a3UJADWN2eNFp82BRejMF6LD2mAZLMjU4ebMpai6uGcDsXQqskmmw4nAbErM/g/eQh/UIAa9oBS9CI0GIZM1YLlVj3XEd4g+14eQtNez9P7HxlAHxmWoK1mKh5DP25bfQAQeh0LJBCqhl9JZhx6+RERRVmjFzRwOSZDQmjbrpVBtO3DXTyOro1xOy6Ey2y9GgYjHgDOBaQamVAp4wN++Vi0x0DnRVkHGlBTPEHxG7R4nSirEVzt230AqNmC5+j2tluqiOxhfuQSWRQzCT3zQYqrhBPzV9JNJj3u53SD4qR1mtBfEZn7AsXY7y2q/U/wkL58O2FEkr+QqJpUKAULOfVdV/MPf4oufBcb148UqPh9VGfFR2w80PweMNoJMmzZKd1pG+hBAT/64z1fw9EullhdbhMdE/Y6EwK2HmvBDeq98qnXNiYl+TrohIJWYJpokVQ2wmHhAviTfjqCFuEEnENIKKYX4DQ0trndBB45gAAAAASUVORK5CYII="
-                                                            alt="">
+                                                            src="images/all_programs/pcw.png" alt="">
                                                         <div class="program__text">Program Compatibility
                                                             Wizard</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,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"
-                                                            alt="">
+                                                            src="images/all_programs/rdc.png" alt="">
                                                         <div class="program__text">Remote Desktop Connection
                                                         </div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAPCSURBVDhPfZF7TJMHFMW/bYZlmcs2RII6XAu14IBWUiFYcNSJoLMMqkFkGxuLTsOytSJEpdtQHk15+gBEKAhDKPJYm8IolVBehVJQHJYi0gqlZZvECIgbczx79ons353kJje5Ob97ci/xn7oWF3wkk6aSVJNM+2VfhTasXXWdrYTf2vj/JbM+/C7NmP9X7oQU1/4owjcDH8C9JhhviWeW7QWNjY67Puds8Y3cSvOOeJcVFLGeERz9BocTY8fhcF4jepbnWCfuRP0TbziE+mdt6F4Yhnj0AgLrL+KzGyPIkqlRKO2bvlbUqk5Krik8m1gWH3M8PWxvyEl3BptnTwj7p6/TKvYgdoCFDHMiyibFJGARudppmB5OY9w6C7OFLPMMrGRvNE5BJjfOxyfUm2jMUDbhXzBrXCe6jN0tdgjXUBGplSOgGbja9Qz6wUn03/kdul4rdDorenomkJWlR1xcN2Jj65ec3YMLCPcf7z8l+LfxdhEPmyv3gV7aBUbBUxQqDdB0jJPGiVWzRmOGssmIc+eakZGhhuBU1bIDxV9JeHzfP0Ic6QFbqIOwrAFlym7UaEbJBI+R2DyFavkItFoLOjvNUKmMSE5WIiWlEXxB5YoDha0m/K+OlROBN5Fa0omyR0toW7BBMQekWoCo20BS8QO0t4+ho2MMTaphiEQq5OXpkHBG+gLQSnBUi75vhitWPuX/jPzxRRQ/AfJ/A84MAVwtcFQyAXndINraRskEI8jJUSElWQGBoOQl4IUcvlU0+kTW2TK1T3BqGOAPAkd6AWYLsKP8T6Rn69DWOoqmpgdIS6tFZo4UoisSG3kD9UuAX/SHm7iXWs7/ZMB+cmtwyxL2Vc/io8tWRCbdQ3xCM7IutqO2zoDyG78gPbPEFhjy9exGl4CGVcA77GObNnge3nPstGzqvHQcP+TqkZHVB0leH+oqf4Vcfh9V0kEyvg6i9FZEHxfPb3YLNNCYH4tXAe/tint9o0eEs3dQyiWhsNVWW6lHY8MQaRyCVGqApHgAxcV63LplwU2ZCdyo7L/p3qGybTtCD6wCCOLCqy4uEeud6FwPr91xFSf5sjk5+b67dx9Df28GCoUFouzOlZBDqc+pjMhHjjSOlurFvULz5jHXAATBYp1YR6bY4OR2cCed9YWIn1AxUVXTO3/6rOS5T8BX007b9hq3uAVp3vcMLXX2CBNs3R7uR2dyHdfsq3qFRjtgRyEhFEaoF5URdtR9J6/UlbG/nsY4WO3K4KZRPbgRLl5hvq4MnivV8xN7CiXG7l+NGjNSJoTWUQAAAABJRU5ErkJggg=="
-                                                            alt="">
+                                                            src="images/all_programs/sync.png" alt="">
                                                         <div class="program__text">Synchronize</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,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"
-                                                            alt="">
+                                                            src="images/all_programs/tour.png" alt="">
                                                         <div class="program__text">Tour Windows XP</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAJXSURBVDhPrZJbSNNRHMfPSIIuEGRldykLCUrs+mBv0QLxISPqJaKgt4KISFJDcyu7rTlrSzLMIpmupmbLy6xVK1nbcuYFJTfmECpRp10XWY2+fc9mZEJS0A8+D/+z8/2e777niP82nuK1aL68Bu6iZDgNSeDS3OgvfzFSPH6e6FZIk+Tojgnml7h4HMCDc8tw7/QSNJxcjDr1QtzNm4+anLjf08nY+HwBCBUgNFgI66NGVLUEcdPTB6ujB15vf8Ts51Qfmy0NdCRqIv8zgvn40HkQBo0a9f1h1A8D9nf0paDdH0StLh22swmw5sejVrUgkuTq/hikJIrlQhaG3mx0mZUwOgJoo8j9hR2EyAAN6NLUOiZFXx4GApm4tE/xjeeXC8fFlQi3H4icYOl4iT7ukdu9xMokD8n9DvkV7WbEsQeuyi04mq4YooFFyLZf3UlD+7WNsLh8CHMbA6CX2JmigSlantdEeyJvbTtRkT0L6xNEMw00wq5NxFP9KnxsPQW304PXb0IYpFie2fSJZ9b54XMUMnpupKvWkg0wswOKq0mqkNFlCoQpGbqNblcRHnueod7pgLWxChajHm363bzT7YDvCCqzYnF8h+I9xTdIvJB33HNrMzDSBbzIAngbYxl258J0xoDu82ksYxvKD02FMkl0UnyCxIqyjHmqsY9E3rM5cyZMGTNgPDwdZRSUZqbguqoAfm0qAiXrEDOJ5QmxlUwhYhrZRa6Qij+RvHqTrTRH89Wk3vt9dG0pUZDISBP5siZiEVES+Qq1o2v/PJPJHBIX+RJC/AANB+NF2YUEvgAAAABJRU5ErkJggg=="
-                                                            alt="">
+                                                            src="images/all_programs/win_exp.png" alt="">
                                                         <div class="program__text">Windows Explorer</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAM8SURBVDhPbZN/TIxxHMfPj81mzu52d1N3Vy6d7soInSd06lFEpR/HWoo1/rBh8wfLTCMmlhm2kJF+KFpFOj/DJjMrJU1FdV1djvIodSXsrkjePs8T2sxne+959nw/79f38/l8n6+Ij9sXDpmrS8JReTLCfu1kBHKPH/h090zSWM7RFFRkaZG+PwN1xWu7heT/xYWLjbh8OgXNtVdQeCoNHdaPKD5mQF+fEy/v7ERlRRU4yy3INYYK/dJNaUofVi/XBYlFovgpAqDgajO6eziMABgj/RuuURcGRwahPFLuXJhaNiybG7xe4b1GqwyIni4Acgoa0Py5E60kK8lG4pycYPqj/GoHjKft2LKvaFRj2Jgn04WGqvQm2V/AKzLxEMtvyB9A79d+JF5qBXPiDdy2nh0Lid3rkHmH5M/SrYpVzIt0EwB5hU3opGQrmVrI3EbqILUMdMB0qBbbUqoQl1aP5F3nRmVzjC/cfUIz3P3WrPCcHyUVAPk0gx7qlaNe3xGI42FD72E80Qav1NcIP9iI1OIuyL1W2BXewQVK37AEzcK1Gq02YpoAyKUK2sjURYABAn2k556ybrjvbULkGRt2l35ALWeFRM1Uy72CUtS6sAWKeewMkejwZAGQTTN4TiW3DvfDRqD8Z28F8/rzdqSae1H9rg+dtD5TZbg3U80kydTLVCKWnSqY+eABNZRQR3o5ZEP29TYkZlqQ/qAfT7kR/KCq+IGKlQE3xe6LTTPcFinINr47H5eohUZKeP7FjqzSeuzIrMfhhxwed7cL8+glOcYBZlIcSU62CUAODdFCuzQ4HciqsiG3qRmPetvRSBXZqa0PZP5O62Qs/y8gmyqooyQrJbWP/UALvb+iI20gQBOJ/z966JvUkymVei6JFqsY/geaAJgf1gy/HehCz2cHBl1ODA27wPU7fj6pqf9WXH7flXnx6qfk7fssan1IpkoXslKjYSVkmwAsZeMT1PrgDKkHU/S7TLPEgzG7zTXe8PIPL/ELXJfnbzQdX2Q0JQewG/QB43dg0ribYjEbr6UbZpTOZqLESkMs36dEExjroVsZ48vERAWGJa4Ojtq8PMyU7MPGbZGwf49QJPoFyUEkZjPl41kAAAAASUVORK5CYII="
-                                                            alt="">
+                                                            src="images/all_programs/wordpad.png" alt="">
                                                         <div class="program__text">WordPad</div>
                                                     </div>
                                                 </div>
-
-
                                             </div>
                                         </div>
                                         <div class="program__item "><img class="program__img"
@@ -324,58 +398,47 @@
                                                 <div class="all__programs">
 
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,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"
-                                                            alt="">
+                                                            src="images/all_programs/freecell.png" alt="">
                                                         <div class="program__text">FreeCell</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,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"
-                                                            alt="">
+                                                            src="images/all_programs/herts.png" alt="">
                                                         <div class="program__text">Hearts</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAOLSURBVDhPjZNtbFNVGMfv2lWYXaADZ8fo6F7ba7vbl7W9vbe31Nv1bWMBQbjOlTmEjaIgm7SMTaFZ9+IcY5Ayt8nIUBBj4iARvohhAbOoZCFCxFiDw2RRGCwGzZCkH6bhb3s1xC8mPsn/w0nO7/c85+Qc4r/qS6pIkQr/z/L/12XGEJzetvHMjz37Md3XiZmh3oULe02nhzrWDbG7eramYk7vo5w1Ur0gSEUo1alwet/O0dmB2KOH/a2YP9qMiXYSw00ytIUoeFsH0NR1eo6rj37KNLSfrG8NnyO9QrGGr1sqCu6NDV7B1AT+PNGNm0fNmBqWoCUSwuq2iwjGLiExeAS/HmxHT6j5J+3qTYdXVbXE8gKR3nx3fYEo+LkzcnV28l3c/ywTdy7noLH/Q3TGL2Fm5AgwGnucZN/rqDMwHyu9bRGVd/sHCk9IIwqubNZc//oYgVPvPYfmwa9wPnoIv8U7/gZHDgBtAlCtQtIuR02J6ebT7vDFPOfmSI6vKZc4Hw2wZ7vX4KVoF94e/hwLMz8gfRy8tQMQdIBNClgIfKtfjhuWArj5539RcU2fKLmgcaWnQU4cP3FoUt98Bud638F87x7c6u8GXqtCQp2B8cUEYM0AeAXmA8W47SPB2/z3S/WVYyr2hex814sZxJ6hk3izcwTXa2uA+F78Ho8CgRW4p8vELdPyFJwDrC8TJ0j4K+AtMt4ldc/GSVPVEyS9QUpsGfjojx0G+sHc7lqgu1GUwJOLRKEEZ5fIgI0k0OjEg22V+M5dDn+x8bZZyxywU85FPM/LCNfWN2bVJn8iZmVuJMOpy0pLfEp8Ty3DVUaLZNArJj1BWsAVmaZtWjrM6WxZAsvKiCW1o9c07rrjJfZ1hw/amElRkuqasORjfFk27m5ixByz2hbWaixzK9TWCYakgzzJyAW9PpPI8bVsyV7TdSrXu+99RVVfXwfvm3pYaxWhCyUFj6KGiiSlNt9RFlivGUlmnKMcu+hyWuukqEUCIUiIpYFXF6ciV1Ruz8t1NaxX2TeEu0yWyZ0684xylfWblWrrFxUkO1ahoV82aex2xzMOtYem093T/yBDfEhyT4s0q/IVidIZzCtl1pYZDC6Hk3K0czp2P1lGeyiSNVq1nMphcDzpNxikqcuTPIbFsoQkRPVuiYoVpKX2ahln5rJ5in3KVc4obOW2LN7EZ/KFvCQFpqF/gQTxF55IlxRE96ymAAAAAElFTkSuQmCC"
-                                                            alt="">
+                                                            src="images/all_programs/Internet Backgammon.png" alt="">
                                                         <div class="program__text">Internet Backgammon</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAOgSURBVDhPrZPZU5NnGMVjq52xFEiCbAnBgCFkIziEGgpBvpBFgoFCmbAI2ABukGExULZoo9G4DGOiRJYAxaWIsQjUtq4wIBUhYLioCLWL0xmddjrTdqztTG90evrla/+Evlfve3F+73nO8zy0//OskclkayWaVlae6dyHFe1XF0rNHl9BzcdL6rLu4bhUk5aVoI2OkagY8Wm5b/J0unU0g+G1/7S0NWKxYa26vEtvOzv54szlZZgd8yhun8TO1lHUWS+ivaUeOVW7ZyUlNUeDlRYVS2EIY6gNAf/KCeL1nKpehXNwBm1nF6HcPQrnyR3wXoiEvV6AzLoOJFUOIHbf5+C+6/olMb/sSojB5ohIK+FS+lAxsd7eM/XMeekh9Hvd8Pasw+qnDDjH7sI8+B1Kj3nR6JxH5r4voDGex0Z5+TJD+cGFsK3FFRQgUXcy95OJJ6hpOICnl4rgOnUcHUMrKGiewH7HHOo67uPcZ4/R2rmAfNNlSLUH/gxWmEcZirIqClBp8ZwevujGcBMTO5oceN/qQ07DLbKcBeTsv4XmM14cGVhC3/jXqD5+DynvOV4yZUZvkLykmgK4T1R0XbEEIP3QNMZmf0Je421KNP3gR3SPrKBvbBWeO99jr/1LDF57jMzy8wjhEXPBSQVGCnCtf7tPTIrTmucocc/VFVTaZjAy+QT+jjSdnoehZQIDpIPe0VUk64+9pEenzDL5hJL2wLmJntxohdQ2Ba3pOvSk9fHpH6h7Vu0N6m3t9cHStYgp0pE/DxFh/iuMR9wM5SvlfgARqLQ/Kqx1/97S6UVx2yTKDk6hsHWCDPEOak7MUr8f7lvCV9/+Bh0JDeVpnkbGqz8Ki1dK/AAuR9Vwk7059161dfzVIbcPnZ5ltLkWYOtfgsvzCCNkh27PP0MuGWhM8s4/SPv3WXxNKVugiqIy2KC2uQKJtuv0DMuNlF1DryoP30U7OVD++k8NPcSuIzMgSvv+5iQWP6dz5D6WQG1n8dUJUeJtgRRAoNjOp79TtCdIXtjIkOodEeK8RWFG/c+C9LrngvTaFzFvG38Nid36DZObOs0Sag+G8zVJnHhNiH/8KQB7S35QcGoRi74lfxM9IVvK5BEZEQK1iS3UdLNFmkG2cFs/W5R1NIKv0ofHaYVccTaTxyOXidwhCuDfBRphfCOUMKynb857awNJj5SoN0aJtEKOUCuNFmclsES6uEhhdnisTB0gk+3x/0yKabR/APA6rI5qA0ICAAAAAElFTkSuQmCC"
-                                                            alt="">
+                                                            src="images/all_programs/Internet Checkers.png" alt="">
                                                         <div class="program__text">Internet Checkers</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAOGSURBVDhPrZPtT1sFFMbvYJ1rR6FQXudKCxa7QUuB297b9ra0hRZaxga0VFJWoC9QXsQgLmzqmAO2LE6dliVoFgsLsugS4iqyLVsCG19Qp2iWGRdfEzEEIsYwMp3GtDzSxsA/4JOcj7/z5JznHOJ/kVVsZU3piipu6ktOTjJFXZSEytIUanhWMc0ZZ8j8G4y8f5qRD7ym06gZCcPfLA5Jkjs30R2xBj97DPdXjrqx3mrG7z4TFh2qx+1ysvZznezDX7TyjVWFAOs0D0uN5biokJ/JF6vzpNLyZJHBsIuY18u1f18eBt4PAC86AL8ecJVgsbViY8G2DwsHWVjQEbhuKcawzYuj1bYNqbXnXoL9fMuTtC2NWPIZQ+GrQeDaOHDCCXSZsDaQjU/OxWPshUR4vF7U1w2hv8KLZacOaxo+MkWqGaHl+EIK7dQQD+zq4KORQWBqDBsv1yN8IxG/zbDQO3QW3T3XMFLVhmWKD1A7gWYK6+RuJAuoL1jO4EepirojsRFWzvYhMh3E9xN7cC8kwMWrs3j3+CXcNakQNmcADBtQxgGVWbhTnBfmC6j5XQ1vjyUxTY7YEu/3qH74LvA0ggE9Jud+wqevB7DmUAD2/YBlL1DKBRRxeEjxIM1RLAqYllmO48IZrsFjiTWY6j3wqOdkBy6FvsFttxvhThPQQgOOAuBgNmBIxreybBTkKFbEucoZ7jMXJjKZxnJuWaeKuPKWr6F7sAc7umYit4dORf4ZeQXorQZ8WsApBw7n4keVOAr/ugnf4TqGL4tKqqgkfZuBbWhNIxrPj84lud6L8OXVd9Mkhs++emPwj3C/ayvOP20yOPPJh1n0ka8T6wMfCIssdJLRU5oShRkvh+B3TM4lmE48SC0wf5xZaG7N2V/asHT6+Ug0TrRQOKUk/0o0HVsWmLtHhbStJsXgNcacmWMcwjAQT+zpmw0lqt23eEpHfyp5WJVTWFn4koLqe9xpwa3mqo0EU99qUYH2nb10bVu6zkVvOUfh2Cl33xSyXKPz8c0ToTjPlXPxvsnTTzSPv3m9Rr9aK6W+zJMw0/vIQ8+KyJoDQp2Ln1HRtHsb/k+csnaGY2y3s43+anZ5h5Gvd1sFKnsTKdO/Skt1dmmxWfKUpo4ntj7HIgYGouA2HBWn0s9nm/zpsSrtSueV+TJE6kPZMpkpVykzZclkWi5J+re/b0sE8S8JgoZ7unfVtAAAAABJRU5ErkJggg=="
-                                                            alt="">
+                                                            src="images/all_programs/internet_herts.png" alt="">
                                                         <div class="program__text">Internet Hearts</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAPLSURBVDhPTZNrTJNnGIa/TfHAOBcotECBtrTsA8JaocAKfOXUlpNELEyoUA6WcfIH6HBTGExYwckCkzPq5gCVSVGCkkFhgYYiCwch6Ei2KRljYjKzZHNmU7fdK5/b3JNcyZs3ue7n/fHexP/mJbFYu13werJlxfsjyQVVhqbyk6OtiYf6joviq2VckZzNDYizo0hqt4okt6tUqpe3nOeq+aBUllocazCob0ysbgx+sYYrhrvQfXwLNV3zKGmYRm5++3xJalixJj5YFhJCuQQHR9uIxUk7aZmnVFp09N0sWVhax/rmI5qpue/Q01mLvvpEtFQnQlNWBlaqHl7FYxBknZkWqmsP+0gTXAmKqt6Wc+Ka9MGPv+DJ0z+wcW8FNwfewmCdGEfe0cImdxRWBwzYkzMMWcEwAlPO/ebqFzvg9oZu2js8ZT8RGqra2X9jeRTm+XVjCDOtNnj7eD69yTHfCH7GEAIzBiDNG4JIrYdYPQiPoIK79umnrrHCVTmEv3+CtWFyBU/X63B/mEDl6QIkVxjBTbkMYWo/0o4ZkHliAtGF12l5C56s7pFLVPmQQ1hmLkEqWyLn+9LxeMYChS1nQFWY4L33Ejr0X+Fo8yxyaiaRXDYKSfbV/wL4CV3PmCG5M7aS9DeJtpLXyo/qNEhpHEVE+SQUpSMwLT/At9//DOOtTew7MkY//195C4G8+RmDLzPZilKzicPa5FVJzRSSqkzQVE/CuHgfM+YA4+Imxr/cwIXrXyM468X2LbjUe7878mTjDqQ8gvAuOo+A4uHH2lojuq+uYmDiHk2/+R/0jnyDLvNdTfcCgg6+CGAFZj9k+kT1M1+NFRFO+fp5T9GBqcr2OTT2LuOjy7dpmi+t4INPl1B7dgHvdsyh7MMZ7DGH+Ma3/2nnLrntKoytZJNyLuGUp//czk9+Lijp5HjpqWm0fnYHTRdXaPE5izjds4zqznnIsvr/YvAVGwyv8GFnbmS4uyCWQTDVfYVOKfU9jqHZh9wSdLMH60yoMm9su3KHpuHCEorqpyFNbXzi4BW55ugtHWMJojJceNEcZkDcLmIXpXGxjszb55TxyUVmWncXwz++jUnuXyBlFT8Eyqt+4ocVPXT0UazZeUhm2b4xvSxh9F62j4zrGUhZEXShJJmWu6VaZ6vwAs4rERqZbVBanL2AinERxhR7+CmaOKSi051U6Ni+cZks3xixGyln83hKS4qitm31iKBTKM0OB2WppTWltbUUqxn2ZJKzq18MxywKOf6JJCdAznf3U7JY4iRbT0/NDrP0T5UJ4m9kC+Koz6M8tgAAAABJRU5ErkJggg=="
-                                                            alt="">
+                                                            src="images/all_programs/Internet Reversi.png   " alt="">
                                                         <div class="program__text">Internet Reversi</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAOGSURBVDhPY8AFXCLbBYrrFu8H0VAh0kBl8/L1bfPO/U/Om/RCTss1QlbbWUPe2FZYTtebV8Taj0vGMpSdwcGBGaocFWRXzCuYuPzy/9bZJ/43TVjxf0GJxceasqArgc2151jatk5Xze/MkHCIkJCzieKFakGABe1xDlOXHvy/b7Hn/329LP/LCh3+q4d0/hdM7P4kElpwVNLIfbpKaEqLa17eXAWHYDmoNgh4uik879ACs/9nZjL8725z+m+YtOy/YsTG/z41h/+Hpfb9kzcJui5oFdIibhXiJBDX3KlkHxgK1crA8GRTRP7bHb7/d08R/B9Ysey/V972/7ENB/+ntx76H1W9979v4Y7/XlFNP2UN/XvEDH3tuGPaGvick13Amm+vzc97cDLq/8Ruj//ZPYf/p7Yc+l83/fT/gt5j/xMbD/wPKdv936dgBxhbexc+Edd0i2JPmZTK45zuxHC6XlnhwAK//7Hldf8L+0/8n7b66v+GmWf+V0w++T+r/fD/mNp9//2LdsINALlM3Lv4pLCenzu3HdAFV3ZNvG2V1/XfO3/7/6MXX/yfs+HG//oZp/8X9R37n9x08H94xR645siqPf8jKvf8N3bJeCGk798iZBqizZDW2vhfr331ny1bT//ffuzx/3mbbv6vnnrqf27Xkf9x9fv/B5bsAmsOAtLZnUf+hwEN1LNLfC2p7T5dTMdbm0Fo5pH3gjquBwqrZv5csuzA/8krLv8vm3gCHA7RwMDzyNkGNsAPGIggzX6xbX9FFG2vSWu5d0hpeaoyMEw/1c+v7nBc3MC3184n766jX/5rU6fkD84BRd9Bzg3KWfhP3Tz8h6Fjyjcjp9RPIop2N0SUbDZKqbl6KGm7iDEU7nhwgMsifJWAUUCIpK5XlLye9xRjx8TDfsCAA2GfvC3/VUxCnkmqu+yU0nRdK63pNkVSw9lLUtVFXl3dmouh5eBtG07n1BLmgoUTWQoW9YYXzLjQ0LX6f1rx7P9haRPBODR1wn+v2I4fEipOkRJqTuYy2u7SIkDNoaGhTOB0wO6a5cLhnO7O7ZzqKmgdGyil7dkhpGC1REDWbDufjNleflmzbfyy5ouFFaxaJFQcFYRUzLkYGKCaQYDTM1eU0yFFlNMuS4zXLFxGRMdLXVjZylBQ3syCV8rEik/azEJA2txQUMZciVfKgZ/B2JgFqI2RgYGBAQBiAowFiN+QwQAAAABJRU5ErkJggg=="
-                                                            alt="">
-                                                        <div class="program__text">Internet Spades</div>
+                                                            src="images/all_programs/Internet Spades.png" alt="">
+                                                        <div class="program__text"> </div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,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"
-                                                            alt="">
+                                                            src="images/all_programs/mine.png" alt="">
                                                         <div class="program__text">Minesweeper</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,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"
-                                                            alt="">
+                                                            src="images/all_programs/pinball.png" alt="">
                                                         <div class="program__text">Pinball</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAEpElEQVRYw+2XXYhVVRTHf/ucM9866uio0yiTzFRSZpDRx0OCREFhHyhaEknYQ2EPQkUkEvMiSQ/2EJoZREWhgQhGJESlPvSB2JSYjTKojaPOOHe848z1zr3nnr33Wj1ca2ZMmJnmRi+up/Owzjr/81///9prw434n8OMJ2nT7pNvL2yqe24wDy0zlWlVUfFlA6rDtYxBy0JTBipHzl7pOdvZ9fCWdUv7JoXwzQ8P3PXJj2lt63b6VXtWLwwkakXUeq9xqkdjl2jivVoRTeK8JoVYC85q35W8bvyo7YOx6gdjJYjXmurKsr//VkTxTnCpbnTNIqTrNCKK9RbZsw239XUkcUShwRudMmkA16Z7MYh4+Pgtostp4ldW4sVAz0XCdzcR7d2BpFN4Nah3Y7Y4mpBgArAoloDk6Q3U7t+F2X4AC/j6Ruzm3djaaZTVN6JO8eOoGY3dAm+GFRvgRXEEhHNbyHzaTlA3C7SoSPvgE2AMTg3WK4gw6RaYqtkrey9nOd41wMV0BtEQ5wOsBkj9HJyA8+C94DXAS4iTAAkDZs2Y0bRk589l/8qGra2tQaF5xebFt83f2NJYg6rSezHN7c1zqAiDUciDjsOUt/9K/skXMcaAAcEzMOTY+/35nlTq/K3vvbwsOyEGbPPKL2bMqXvDh0ImZzl6fIDXtnxDwXkSVWJVYoRBFWZuWkHt1vVw9ABOFIeScxAaeOSeuQ2N02funJAGWj/bX5t2lcuJE0h7vj7UyZenlJrKOtR6XBAWuTPAQCcunSYXTCU1FHC87RwdXf08++giPj94oi+bGVgzqzw6NiEA7eXZofmZ7vVXclFFKn3uiX1nGpZl65uoGuwl7wIOtZ3hYBek88KFfkvqgR9wQQXu2wq0ooKaS5al9+aQqOaXd166+7sJu2DP6tUe2AGw/IVtv7lwwTKsoAreGDo6L7F3cDGgUAVUm6ITrna1Mgxwqpgg8pOfA2XqiR14ixFInKIEULCM+OpoXTuHFUMxsRSDSB1YAVUcxUdsAbiezxVVjxcIjJGSADBWICkQSEwsgopAnL++iQ0Y63GiWNESMWATCGJCDbFOsKIQZ4ddbEZ0wziMtSTeYARfGgCJAAWceLwLi4dCLgeE1w5uwIO1JAJqfGkYEJeARkUAanCqMDQ0ogUjKfB4W8ALCKGWhgEn4BMIwKqiohDHI+aoDgNRh3qLiKJKaY5j4xw4xVRYrAcRcx0RXmVBPRiLE4OqlmgfsFdtGArurzkwioFR5zdhmWA1IJCxV85xMmChEKFViteguIjaGEz4jxmAeggFj6KhGVMD41vJrEISY1CsCgua51FbrVBIIImLYGwMSczUipBVz9zP1NoaMGbyLqiMwKgD5xGJUA25+Za5bHh1OUcOd9DT3U8UhlRVlXPHnU20tDQwZVo1+bzFJwU3aQANRn9asjDZ13YifMqoQ1RwPqThpjoee/w+4oLDxjlsfogkN+AunTv9R8+p3MnA5U+Wa7KrJBeT1tbWqL237v1jF2rWrX7+IW8T21/IZtKaS/VVaeb3wMZHakzm8LzZ08+uXbt26D+8SK0Kt29vncKNKGH8CVWGqQariNvGAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE5LTA0LTAxVDEzOjU1OjU1KzAwOjAwPnFKAQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOS0wNC0wMVQxMzo1NTo1NSswMDowME8s8r0AAAAASUVORK5CYII="
-                                                            alt="">
+                                                            src="images/all_programs/solitaire.png" alt="">
                                                         <div class="program__text">Solitaire</div>
                                                     </div>
                                                     <div class="program__item"><img class="program__img"
-                                                            src="data:image/png;base64,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"
-                                                            alt="">
+                                                            src="images/all_programs/spider_solitaire.png" alt="">
                                                         <div class="program__text">Spider Solitaire</div>
                                                     </div>
                                                 </div>
@@ -389,8 +452,7 @@
 
                                                 <div class="all__programs">
                                                     <div class=" program__item"><img class="program__img"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVR42mNgAAIAAAUAAen63NgAAAAASUVORK5CYII="
-                                                            alt="">
+                                                            src="images/all_programs/empty.png" alt="">
                                                         <div class="program__text">(Empty)</div>
                                                     </div>
                                                 </div>
@@ -442,6 +504,7 @@
         </div>
         <!-- Start Menu End -->
 
+
         <!-- Desktop Icons Start -->
         <div class="desktop__icons">
             <div class="icon selected">
@@ -464,36 +527,13 @@
                 <img src="./images/start_menu_images/notepad.png" alt="">
                 <div class="text">ReadME.txt</div>
             </div>
-            <div class="icon">
-                <img src="./images/desktop_icons/documents.png" alt="">
-                <div class="text">Documents</div>
-            </div>
-            <div class="icon">
-                <img src="./images/desktop_icons/documents.png" alt="">
-                <div class="text">Documents</div>
-            </div>
-            <div class="icon">
-                <img src="./images/desktop_icons/documents.png" alt="">
-                <div class="text">Documents</div>
-            </div>
-            <div class="icon">
-                <img src="./images/desktop_icons/documents.png" alt="">
-                <div class="text">Documents</div>
-            </div>
-            <div class="icon">
-                <img src="./images/desktop_icons/documents.png" alt="">
-                <div class="text">Documents</div>
-            </div>
-            <div class="icon">
-                <img src="./images/desktop_icons/documents.png" alt="">
-                <div class="text">Documents</div>
-            </div>
-            <div class="icon">
-                <img src="./images/desktop_icons/documents.png" alt="">
-                <div class="text">Documents</div>
+            <div class="icon" type="txt" onclick="openWinapp()">
+                <img src="./images/start_menu_images/winap.png" alt="">
+                <div class="text">Winapp</div>
             </div>
         </div>
         <!-- Desktop Icons End   -->
+
     </section>
     <!-- Main Section End   -->
 
@@ -502,6 +542,7 @@
     <footer class="start">
         <div class="footer__items left">
             <img src="xp_start.png" alt="start" class="footer__start">
+            <div class="footer__item__window"></div>
         </div>
         <div class="footer__items right">
             <img class="footer__icon" src="1.png" alt="">
@@ -513,6 +554,9 @@
     </footer>
     <!-- Footer Start Menu End -->
 </body>
+
+<script src="https://unpkg.com/webamp"></script>
+<script src="https://unpkg.com/webamp@1.4.2/built/webamp.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="js/script.js"></script>
