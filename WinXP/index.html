@@ -85,9 +85,31 @@
         <!-- Floating Window Start -->
         <div class="floating__window">
 
-            <div class="window maximized">
+            <div class="window maximized vscode">
                 <div class="title-bar">
                     <div><img src="images/start_menu_images/notepad.png"> ReadME.txt</div>
+                    <div class="controls">
+                        <button class="cls"></button>
+                        <button class="max"></button>
+                        <button class="min"></button>
+                    </div>
+                </div>
+                <iframe src="https://github1s.com/battleplayer02/win-XP" frameborder="0"></iframe>
+            </div>
+            <div class="window maximized chrome">
+                <div class="title-bar">
+                    <div><img src="images/desktop_icons/chrome.png"> Google Chrome</div>
+                    <div class="controls">
+                        <button class="cls"></button>
+                        <button class="max"></button>
+                        <button class="min"></button>
+                    </div>
+                </div>
+                <iframe src="https://www.google.com/webhp?igu=1" frameborder="0"></iframe>
+            </div>
+            <div class="window maximized">
+                <div class="title-bar">
+                    <div><img src="images/start_menu_images/notepad.png"> Checkout The Code </div>
                     <div class="controls">
                         <button class="cls"></button>
                         <button class="max"></button>
@@ -116,7 +138,7 @@ ____________________________________________________________________________
 Do follow me on Github (@battleplayer02) and Linkedin (@hshekhar02).
                 </textarea>
             </div>
-            <div class="window hidden wordpad" onload="enableEditMode();">
+            <div class="hidden window wordpad">
                 <div class="title-bar">
                     <div><img src="images/start_menu_images/notepad.png"><span class="nameofdoc"></span></div>
                     <div class="controls">
@@ -125,7 +147,7 @@ Do follow me on Github (@battleplayer02) and Linkedin (@hshekhar02).
                         <button class="min"></button>
                     </div>
                 </div>
-                <div class="menu-bar">
+                <div style="margin-left: 5px;">
                     <button onclick="execCmd('bold');"><i class="fa fa-bold"></i></button>
                     <button onclick="execCmd('italic');"><i class="fa fa-italic"></i></button>
                     <button onclick="execCmd('underline');"><i class="fa fa-underline"></i></button>
@@ -159,7 +181,7 @@ Do follow me on Github (@battleplayer02) and Linkedin (@hshekhar02).
                     <button onclick="execCmd('unlink');"><i class="fa fa-unlink"></i></button>
                     <button onclick="toggleSource();"><i class="fa fa-code"></i></button>
                     <button onclick="toggleEdit();">Toggle Edit</button>
-                    <br />
+
                     <select onchange="execCommandWithArg('fontName', this.value);">
                         <option value="Arial">Arial</option>
                         <option value="Comic Sans MS">Comic Sans MS</option>
@@ -489,7 +511,85 @@ Do follow me on Github (@battleplayer02) and Linkedin (@hshekhar02).
                         </div>
                     </div>
                 </div>
-                <div class="menu__right"></div>
+                <div class="menu__right">
+
+                    <div class="menu__item"><img class="menu__item__img" src="images/start_menu_images/mydocs.png"
+                            alt="My Documents">
+                        <div class="menu__item__texts">
+                            <div class="menu__item__text ">My Documents</div>
+                        </div>
+                    </div>
+                    <div class="menu__item" style=""><img class="menu__item__img"
+                            src="images/start_menu_images/recentdocs.png" alt="My Recent Documents">
+                        <div class="menu__item__texts">
+                            <div class="menu__item__text ">My Recent Documents</div>
+                            <div class="menu__arrow" style="border-left-color: rgb(0, 19, 107);"></div>
+                        </div>
+                    </div>
+                    <div class="menu__item"><img class="menu__item__img" src="images/start_menu_images/mypic.png"
+                            alt="My Pictures">
+                        <div class="menu__item__texts">
+                            <div class="menu__item__text ">My Pictures</div>
+                        </div>
+                    </div>
+                    <div class="menu__item"><img class="menu__item__img" src="images/start_menu_images/mymusic.png"
+                            alt="My Music">
+                        <div class="menu__item__texts">
+                            <div class="menu__item__text ">My Music</div>
+                        </div>
+                    </div>
+                    <div class="menu__item"><img class="menu__item__img" src="images/start_menu_images/mycomputer.png"
+                            alt="My Computer">
+                        <div class="menu__item__texts">
+                            <div class="menu__item__text ">My Computer</div>
+                        </div>
+                    </div>
+                    <div class="menu__separator"></div>
+                    <div class="menu__item"><img class="menu__item__img"
+                            src="images/start_menu_images/control panel.png" alt="Control Panel">
+                        <div class="menu__item__texts">
+                            <div class="menu__item__text ">Control Panel</div>
+                        </div>
+                    </div>
+                    <div class="menu__item"><img class="menu__item__img"
+                            src="images/start_menu_images/program_access.png" alt="Set Program Access and Defaults">
+                        <div class="menu__item__texts">
+                            <div class="menu__item__text ">Set Program Access and Defaults</div>
+                        </div>
+                    </div>
+                    <div class="menu__item" style=""><img class="menu__item__img"
+                            src="images/start_menu_images/connect to.png" alt="Connect To">
+                        <div class="menu__item__texts">
+                            <div class="menu__item__text ">Connect To</div>
+                            <div class="menu__arrow" style="border-left-color: rgb(0, 19, 107);"></div>
+                        </div>
+                    </div>
+                    <div class="menu__item"><img class="menu__item__img"
+                            src="images/start_menu_images/printer and faxex.png" alt="Printers and Faxes">
+                        <div class="menu__item__texts">
+                            <div class="menu__item__text ">Printers and Faxes</div>
+                        </div>
+                    </div>
+                    <div class="menu__separator"></div>
+                    <div class="menu__item"><img class="menu__item__img" src="images/start_menu_images/help.png"
+                            alt="Help and Support">
+                        <div class="menu__item__texts">
+                            <div class="menu__item__text ">Help and Support</div>
+                        </div>
+                    </div>
+                    <div class="menu__item"><img class="menu__item__img" src="images/start_menu_images/search.png"
+                            alt="Search">
+                        <div class="menu__item__texts">
+                            <div class="menu__item__text ">Search</div>
+                        </div>
+                    </div>
+                    <div class="menu__item"><img class="menu__item__img" src="images/start_menu_images/run.png"
+                            alt="Run...">
+                        <div class="menu__item__texts">
+                            <div class="menu__item__text ">Run...</div>
+                        </div>
+                    </div>
+                </div>
             </section>
             <footer>
                 <div class="footer__item">
@@ -527,9 +627,21 @@ Do follow me on Github (@battleplayer02) and Linkedin (@hshekhar02).
                 <img src="./images/start_menu_images/notepad.png" alt="">
                 <div class="text">ReadME.txt</div>
             </div>
-            <div class="icon" type="txt" onclick="openWinapp()">
+            <div class="icon" type="txt" ondblclick="openWinapp()">
                 <img src="./images/start_menu_images/winap.png" alt="">
                 <div class="text">Winapp</div>
+            </div>
+            <div class="icon" type="txt" ondblclick="openVSCode()">
+                <img src="./images/desktop_icons/vscode.png" alt="">
+                <div class="text">Code</div>
+            </div>
+            <div class="icon" ondblclick="openChrome()">
+                <img src="./images/desktop_icons/chrome.png" alt="">
+                <div class="text">Google Chrome</div>
+            </div>
+            <div class="icon" ondblclick="openChat()">
+                <img src="./images/desktop_icons/chat.png" alt="">
+                <div class="text">Chat</div>
             </div>
         </div>
         <!-- Desktop Icons End   -->

@@ -243,7 +243,10 @@ document.addEventListener("click", (e) => {
             windowDivEle.classList.toggle("maximized")
         }
         if (e.target.getAttribute("class") == "cls") {
-            windowDivEle.style.display = "none";
+            windowDivEle.classList.toggle("hidden")
+            if (e.target.classList.contains("wordpad")) {
+                textDocumentDB[e.target.getAttribute("docid")] = document.richTextField;
+            }
         }
         if (e.target.getAttribute("class") == "min") {
             windowDivEle.style.display = "none";
@@ -329,13 +332,15 @@ let createIcon = () => {
     desktopIcinsDiv.innerHTML += textDocumentIcon(textDocumentDB.length)
     textDocumentDB.push({
         id: textDocumentDB.length,
-        name: `New Text Document (${textDocumentDB.length})`
+        name: `New Text Document (${textDocumentDB.length})`,
+        data: document.richTextField
     });
     desktopIconSelect();
 }
 let docOpen = (event) => {
     console.log(event);
-    emptyDocument.classList.remove("hidden");
+    emptyDocument.classList.toggle("hidden");
+    document.richTextField = textDocumentDB[event.target.getAttribute("docid")];
     /*******************
      * Floating Window *
      *******************/
@@ -351,7 +356,7 @@ let docOpen = (event) => {
 /********************************
  *    Text Editor Operations    *
  ********************************/
-var richTextField = emptyDocument.querySelector("iframe");
+document.richTextField.document.designMode = "on";
 var showingSourceCode = false;
 var isInEditMode = true;
 
@@ -423,3 +428,50 @@ webamp.close();
 let openWinapp = () => {
     webamp.reopen();
 }
+
+
+/*****************
+ * Vscode Toggle *
+ *****************/
+
+let openVSCode = (e) => {
+    document.querySelector(".vscode").classList.toggle("hidden")
+}
+/*****************
+ * Chrome Toggle *
+ *****************/
+
+let openChrome = (e) => {
+    document.querySelector(".chrome").classList.toggle("hidden")
+}
+/*****************
+ * Chat Toggle *
+ *****************/
+
+let openChat = (e) => {
+    document.querySelector(".floating__window").innerHTML += `
+    <div class="window maximized chat">
+                <div class="title-bar">
+                    <div><img src="images/desktop_icons/chat.png"> Chat</div>
+                    <div class="controls">
+                        <button class="cls"></button>
+                        <button class="max"></button>
+                        <button class="min"></button>
+                    </div>
+                </div>
+                <iframe src="chat/index.html" frameborder="0"></iframe>
+            </div>`
+
+    /*******************
+     * Floating Window *
+     *******************/
+    $(".window").draggable({
+        containment: "document"
+    })
+    $(".window").resizable({
+        handles: "n, s, e, w, ne, nw, se, sw"
+    })
+}
+
+
+
