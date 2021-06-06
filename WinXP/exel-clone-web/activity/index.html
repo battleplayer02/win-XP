@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="menu-container" style="margin-left: 5px;">
+        <div class="menu-item-1">
+            <div class="img">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Google_Sheets_2020_Logo.svg"
+                    alt="Google Sheets" height="36">
+            </div>
+            <div class="menu-container">
+                <div class="menu-container-item" style="margin-left: 15px; margin-top: 8px;" contenteditable>
+                    Enter File Name
+                </div>
+                <div class="menu-container-item">
+                    <div class="menu-item-option new">Open</div>
+                    <div class="menu-item-option open">
+                        <input type="file" id="" class="open" value="Open">
+                    </div>
+                    <div class="menu-item-option save">Save</div>
+                </div>
+            </div>
+        </div>
+        <div class="menu-item-2">
+            <select id="font-size" class="font-size">
+                <option value="8">Select Font Size</option>
+                <option value="8px">8</option>
+                <option value="10px">10</option>
+                <option value="12px">12</option>
+                <option value="16px">16</option>
+                <option value="20px">20</option>
+                <option value="32px">32</option>
+            </select>
+            <select id="font-family" class="font-family">
+                <option value="Arial" selected>Select Style</option>
+                <option value="Arial">Arial</option>
+                <option value="Cambria">Cambria</option>
+                <option value="Georgia">Georgia</option>
+                <option value="monospace">monospace</option>
+                <option value="sans-serif">sans-serif</option>
+                <option value="fantasy">fantasy</option>
+            </select>
+            <div class="styler-btn-container">
+                <div class="styler-btn" style="font-weight: bolder;margin: 0 20px;" id="bold">B</div>
+                <div class="styler-btn" style="font-weight: bolder;margin: 0 20px;" id="italic">I</div>
+                <div class="styler-btn" style="font-weight: bolder;margin: 0 20px;" id="underline">U</div>
+                <select id="styler-align" class="styler-align" style="border:none">
+                    <option value="left" selected>Align</option>
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                </select>
+            </div>
+            <div class="styler-btn-container">
+                Text Color: <input type="color" id="color">
+                Background: <input type="color" id="bg-color">
+            </div>
+        </div>
+    </div>
+    <div class="formula-container">
+        <input value="A1" type="text" class="address-box" id="address-box" readonly>
+        <div class="img">
+            <img
+                src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9Ijk1LjE3N3B4IiBoZWlnaHQ9Ijk1LjE3N3B4IiB2aWV3Qm94PSIwIDAgOTUuMTc3IDk1LjE3NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgOTUuMTc3IDk1LjE3NzsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZD0iTTkzLjc3OSw2My42NzZjLTAuOTgxLTEuMDgyLTIuMjQtMS42NTMtMy42MzktMS42NTNjLTEuMTQ1LDAtMy45NTMsMC4zOTYtNS4zMTgsNC4wNjINCgkJYy0wLjM0NCwwLjkyMi0wLjQ0MywxLjQxMy0wLjkwNywxLjM2M2MtMC43ODYtMC4wNzgtMy44NDUtMy4zNDYtNC44NDUtOC4xNDVsLTIuNDgyLTExLjZjMS45NjEtMy4xNzcsMy45NzctNS42MjksNS45ODgtNy4yOTINCgkJYzEuMDgtMC44ODIsMi4zMTQtMS4zNDksMy44MDgtMS40M2MzLjgxNS0wLjI2LDUuMjAzLTAuNzQsNi4xNC0xLjM5OWMxLjU0Ny0xLjExNSwyLjM5Ny0yLjcyOCwyLjM5Ny00LjU0Mg0KCQljMC0xLjU5Ni0wLjYwNC0zLjAxOS0xLjc1LTQuMTE1Yy0xLjEwNi0xLjA1OS0yLjU4MS0xLjYxOC00LjI2LTEuNjE4Yy0yLjQ2OCwwLTUuMjM5LDEuMTQyLTguNDc0LDMuNDkNCgkJYy0xLjkxLDEuMzg4LTMuOTM1LDMuNDA2LTYuMTIxLDYuMTExYy0wLjcxMS0yLjY1My0xLjMxOS0zLjg4OS0xLjc3MS00LjYyOGMtMS4zOTYtMi4zMDMtMy42NjQtMi4zMDMtNC40MS0yLjMwM2wtMC44MTMsMC4wMTMNCgkJbC0yMy4wNDUsMC41NDRsMS4yOTctNS41MDZjMC44MjgtMy41OTMsMS45MTUtNi40MzYsMy4yMjYtOC40NWMwLjYzOC0wLjk4LDEuNjE0LTIuMTQ4LDIuNjM4LTIuMTQ4DQoJCWMwLjM4NywwLDEuMTUyLDAuMDYzLDIuNTgyLDAuMzZjMy45NzgsMC44Niw1LjQ2NSwwLjk1OSw2LjIzOSwwLjk1OWMxLjcwOCwwLDMuMjEtMC41NzEsNC4zNDctMS42NTENCgkJYzEuMTc2LTEuMTE5LDEuNzk3LTIuNTgzLDEuNzk3LTQuMjMzYzAtMS4yOS0wLjQyNC0zLjE1Ni0yLjQ0NS00LjcyMmMtMS4zOTYtMS4wODEtMy4zMTEtMS42MjktNS42OTEtMS42MjkNCgkJYy0zLjU2OCwwLTcuMzQ5LDEuMTQxLTExLjI0MSwzLjM5Yy0zLjg2MiwyLjIzMi03LjAzOCw1LjMxNy05LjQzOCw5LjE3MWMtMi4xMDUsMy4zNzktMy45MjksOC4xMjQtNS41NTUsMTQuNDU5SDIxLjg3Nw0KCQlsLTIuMjM4LDguODMxaDEwLjE4NmwtNy43NCwzMS4xMTZjLTEuNjAzLDYuNDQzLTIuNzc3LDguMDI4LTMuMDk4LDguMzYxYy0wLjg3NSwwLjkwNC0yLjY4LDEuMDk0LTQuMDQsMS4wOTQNCgkJYy0xLjY4MywwLTMuNDc3LTAuMTIxLTUuMzQ5LTAuMzYxYy0xLjI4Ni0wLjE1Ny0yLjI2NS0wLjIzNC0yLjk5MS0wLjIzNGMtMS44NzgsMC0zLjQyMywwLjQ4OC00LjU5LDEuNDQ4DQoJCUMwLjcxNiw4MS44NTgsMCw4My40MDMsMCw4NS4xNGMwLDEuMzU3LDAuNDQsMy4zMDksMi41MzksNC44OTVjMS40MzQsMS4wOCwzLjM4OSwxLjYyOCw1LjgxMywxLjYyOA0KCQljNi4wNjksMCwxMS43MjUtMi40MTEsMTYuODEzLTcuMTY1YzQuOTQ3LTQuNjI0LDguNTcxLTExLjQxMywxMC43NzMtMjAuMTk1bDYuMTE5LTI0LjkzNWwyMC44NywwLjM1NGwyLjI0NCw5LjY0bC00LjU3Myw2Ljc0OA0KCQljLTAuODI0LDEuMjA5LTIuMDUxLDIuNzAxLTMuNjU4LDQuNDQxYy0wLjg0LDAuOTItMS4zOTgsMS40MjYtMS43MjEsMS42ODljLTEuMzE2LTEuNjA4LTIuODA5LTIuNDI0LTQuNDMyLTIuNDI0DQoJCWMtMS41MjUsMC0yLjkxLDAuNjI1LTQuMDAyLDEuODA0Yy0xLjAzNiwxLjExNi0xLjU4MywyLjUxNC0xLjU4Myw0LjAzOGMwLDEuODMsMC43ODMsMy40NTksMi4yNjQsNC43MDkNCgkJYzEuMzU3LDEuMTQ2LDMuMDM0LDEuNzI4LDQuOTgxLDEuNzI4YzIuNDE0LDAsNC44ODQtMC45MjEsNy4zNDQtMi43MzdjMi4wNTMtMS41MTksNC42OTctNC41MjYsOC4wNzQtOS4xODkNCgkJYzIuMTcsNi4yNCw1LjI0OCwxMC4yNTIsNi43MTQsMTEuOTI3YzIuMzEzLDIuNjQ0LDYuMDQ5LDQuMjIsOS45OTMsNC4yMmMzLjM0OCwwLDUuMjQ0LTEuNDAyLDYuOTE2LTIuNjQxbDAuMTQ4LTAuMTA5DQoJCWMyLjkyNi0yLjE2NCwzLjU0LTQuNTQ1LDMuNTQtNi4xNjZDOTUuMTc0LDY1Ljk2NSw5NC42OTEsNjQuNjc5LDkzLjc3OSw2My42NzZ6Ii8+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==" />
+        </div>
+        <input type="text" class="formula-box" placeholder="  Enter Your Formula"
+            style="padding-left: 20px;font-weight: bolder;">
+    </div>
+
+
+    <div class="grid_container">
+        <div class="top-left-block">
+        </div>
+        <div class="top-row">
+        </div>
+        <div class="left-col">
+        </div>
+        <div class="grid"></div>
+    </div>
+    <div class="sheets">
+        <div class="add-sheet_container" id="add-btn">
+            <i style="color:black" class="fas fa-plus icon"></i>
+        </div>
+        <div class="sheets-list">
+            <div class="sheet active-sheet" sheetIdx="1"> Sheet 1</div>
+        </div>
+    </div>
+    <script src="init.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="newOpenSave.js" defer></script>
+</body>
+
+</html>

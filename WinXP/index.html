@@ -82,10 +82,12 @@
 
         <div id="app" class="hidden"></div>
 
+
+
         <!-- Floating Window Start -->
         <div class="floating__window">
 
-            <div class="window maximized vscode">
+            <div class="window maximized chatcode">
                 <div class="title-bar">
                     <div><img src="images/start_menu_images/notepad.png"> ReadME.txt</div>
                     <div class="controls">
@@ -95,6 +97,17 @@
                     </div>
                 </div>
                 <iframe src="https://github1s.com/battleplayer02/win-XP" frameborder="0"></iframe>
+            </div>
+            <div class="window maximized vscode">
+                <div class="title-bar">
+                    <div><img src="images/start_menu_images/notepad.png"> ReadME.txt</div>
+                    <div class="controls">
+                        <button class="cls"></button>
+                        <button class="max"></button>
+                        <button class="min"></button>
+                    </div>
+                </div>
+                <iframe src="https://github1s.com/battleplayer02/chat-himanshu" frameborder="0"></iframe>
             </div>
             <div class="window maximized chrome">
                 <div class="title-bar">
@@ -106,6 +119,17 @@
                     </div>
                 </div>
                 <iframe src="https://www.google.com/webhp?igu=1" frameborder="0"></iframe>
+            </div>
+            <div class="window maximized exel">
+                <div class="title-bar">
+                    <div><img src="images/desktop_icons/chrome.png"> Google Chrome</div>
+                    <div class="controls">
+                        <button class="cls"></button>
+                        <button class="max"></button>
+                        <button class="min"></button>
+                    </div>
+                </div>
+                <iframe src="exel-clone-web/activity/index.html" frameborder="0"></iframe>
             </div>
             <div class="window maximized">
                 <div class="title-bar">
@@ -130,10 +154,11 @@ Features:
 - Desktop icons are clickable. Double clicking them will open the aaplication;
 - Time in system-tray is your system's time.
 - This window is draggable, closable, minimizable and maximizable. Try it.
-____________________________________________________________________________
+- 
+_______________________________________________________________________________________________________________________________________________________
 
 The code is on github feel free to play with it. Star the repository if you liked this. Contributions to this repository are welcome and appreciated.
-____________________________________________________________________________
+________________________________________________________________________________________________________________________________________________________
 
 Do follow me on Github (@battleplayer02) and Linkedin (@hshekhar02).
                 </textarea>
@@ -232,7 +257,7 @@ Do follow me on Github (@battleplayer02) and Linkedin (@hshekhar02).
             </div>
             <hr>
             <div class="context__item" id="create_text_document">
-                New Text Document
+                New Word Document
             </div>
             <div class="context__item">
                 New Folder
@@ -538,8 +563,8 @@ Do follow me on Github (@battleplayer02) and Linkedin (@hshekhar02).
                             <div class="menu__item__text ">My Music</div>
                         </div>
                     </div>
-                    <div class="menu__item"><img class="menu__item__img" src="images/start_menu_images/mycomputer.png"
-                            alt="My Computer">
+                    <div class="menu__item" ondblclick="openGlitch()"><img class="menu__item__img"
+                            src="images/start_menu_images/mycomputer.png" alt="My Computer">
                         <div class="menu__item__texts">
                             <div class="menu__item__text ">My Computer</div>
                         </div>
@@ -611,7 +636,7 @@ Do follow me on Github (@battleplayer02) and Linkedin (@hshekhar02).
                 <img src="./images/desktop_icons/documents.png" alt="">
                 <div class="text">Documents</div>
             </div>
-            <div class="icon">
+            <div class="icon" ondblclick="openGlitch()">
                 <img src="./images/desktop_icons/my_computer.png" alt="">
                 <div class="text">My Computer</div>
             </div>
@@ -642,6 +667,14 @@ Do follow me on Github (@battleplayer02) and Linkedin (@hshekhar02).
             <div class="icon" ondblclick="openChat()">
                 <img src="./images/desktop_icons/chat.png" alt="">
                 <div class="text">Chat</div>
+            </div>
+            <div class="icon" ondblclick="openChatCode()">
+                <img src="./images/desktop_icons/vscode.png" alt="">
+                <div class="text">Chat</div>
+            </div>
+            <div class="icon" ondblclick="openExcel()">
+                <img src="./images/desktop_icons/excel.png" alt="">
+                <div class="text">Sheet</div>
             </div>
         </div>
         <!-- Desktop Icons End   -->

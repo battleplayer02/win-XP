@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .balls {
+      margin-top: 4rem;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .ball {
+      height: 4rem;
+      width: 4rem;
+      border-radius: 50%;
+      border: none;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="balls">
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+  </div>
+  <script>
+    // Q Make a loading animation using the above 5 balls and JS
+    let i = 0;
+
+
+
+    var id = null;
+    function myMove() {
+      id = setInterval(frame, 1000);
+      function frame(params) {
+        console.log(i);
+        // document.querySelectorAll("ball").forEach(function (ele) {
+        //   ele.style.opacity = "0"
+        // })
+        // console.log(document.querySelector(`balls:nth-child(${i + 1})`));
+        document.querySelector(`body div.ball:nth-child(${1})`).style.opacity = "1";
+        document.querySelector(`body div.ball:nth-child(${2})`).style.opacity = "1";
+        document.querySelector(`body div.ball:nth-child(${3})`).style.opacity = "1";
+        document.querySelector(`body div.ball:nth-child(${4})`).style.opacity = "1";
+        
+
+        document.querySelector(`body div.ball:nth-child(${i + 1})`).style.opacity = "0";
+        i++;
+        i %= 4;
+      }
+    }
+    myMove()
+  </script>
+</body>
+
+</html>

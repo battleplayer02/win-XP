@@ -1,0 +1,366 @@
+body {
+    margin: 0;
+    outline: navajowhite;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+    transition: 100ms all;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+    transition: 100ms all;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 10px;
+    transition: 100ms all;
+}
+
+::-webkit-scrollbar:horizontal {
+    background: lightgrey;
+    border-radius: 10px;
+    height: 10px;
+    transition: 100ms all;
+}
+
+* {
+    color: #5F6368;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    transition: 100ms all;
+}
+
+/* menu */
+
+.menu-item-1 {
+    display: flex;
+    background: #ffffff;
+    height: 45px;
+    align-items: center;
+    border-bottom: lightgrey 1px solid;
+}
+
+.img {
+    border: none;
+    margin-left: 10px;
+    /* background: red; */
+}
+
+.menu-container-item {
+    /* font-size: small; */
+    width: 100%;
+    gap: 20px;
+    display: flex;
+}
+
+.menu-container-item input {
+    margin: 1px;
+    /* font-size: large; */
+    outline: navajowhite;
+    color: grey;
+    border: none;
+}
+
+.menu-container-item input:hover {
+    border-radius: 3px;
+    box-sizing: border-box;
+    border: 1px lightgrey solid;
+}
+
+.menu-container-item input:active {
+    border-radius: 3px;
+    box-sizing: border-box;
+    border: 1px lightgrey solid;
+}
+
+.menu-container-item {
+    margin-left: 5%;
+}
+
+.menu-item-option {
+    padding: 3px 5px;
+}
+
+.menu-item-option:hover {
+    border-radius: 3px;
+    background: #F8FAFC;
+}
+
+.menu-item-2 {
+    border-bottom: lightgrey 1px solid;
+    height: 32px;
+    display: flex;
+}
+
+.menu-item-2>select {
+    outline: navajowhite;
+    /* font-size: small; */
+    width: 20%;
+}
+
+.styler-btn-container {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.styler-btn-container input {
+    margin-left: 10px;
+}
+
+.styler-btn-container :first-child {
+    border-left: solid 1px lightgrey;
+}
+
+.styler-btn:hover:active {
+    transform: scale(1.1);
+}
+
+.styler-btn:hover {
+    cursor: pointer;
+    background: lightgray;
+    border-radius: 3px;
+}
+
+.styler-btn, .styler-align {
+    /* font-size: small; */
+    padding: 0 10px;
+    border: solid 1px lightgrey;
+    border-radius: 3px;
+    height: 20px;
+    width: 30px;
+    text-align: center;
+}
+
+.styler-align {
+    width: 150px;
+}
+
+.menu-item-3 {
+    /*   background:green; */
+    height: 23px;
+}
+
+/* ********************** */
+
+/* formula container styling starts here */
+
+.formula-container img {
+    filter: grayscale(100%);
+    height: 15px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.formula-container {
+    /* background-color: rgb(151, 169, 175); */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px grey solid;
+    border-width: 0.01em;
+}
+
+.address-box:hover {
+    background-color: #F8FAFC;
+}
+
+.address-box {
+    font-weight: 700;
+    border: none;
+    outline: none;
+    /* font-size: 1rem; */
+    margin-left: 10px;
+    /* font-size: 0.9rem; */
+    /* background: red; */
+}
+
+.formula-container .img {
+    margin: 5px 0px;
+    padding: 0px 10px;
+    border-right: 1px solid;
+    border-left: 1px solid;
+}
+
+.formula-box {
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
+/* sheets area */
+
+.sheets {
+    background-color: #F1F3F4;
+    /* font-size: 0.9rem; */
+    height: 40px;
+    display: flex;
+    font-weight: bold;
+    color: #1E833D;
+}
+
+.add-sheet_container {
+    height: 100%;
+    min-width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 10px;
+    padding: 0 3px;
+}
+
+.sheets-list {
+    display: flex;
+    height: 100%;
+    overflow-x: scroll;
+    gap: 1px;
+}
+
+.sheets-list::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+.sheets-list {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.sheet {
+    padding: 0 15px;
+    min-width: 60px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: #5F6368 solid 1px;
+}
+
+.active-sheet {
+    background-color: white;
+    /* border-top-left-radius: 5px; */
+    /* border-top-right-radius: 5px; */
+    /* transform: scale(1.1); */
+    /* border:5px solid gray; */
+}
+
+/************************ grid container css *************************************/
+
+.top-left-block {
+    height: 30px;
+    width: 30px;
+    background-color: lightgray;
+    border: grey solid 1px;
+    position: sticky;
+}
+
+.top-row>* {
+    padding: 5px;
+}
+
+.top-row {
+    z-index: 10;
+    height: 30px;
+    background-color: #F8F9FA;
+    display: flex;
+    position: absolute;
+    top: 0px;
+    left: 30px;
+}
+
+.row {
+    display: flex;
+}
+
+.col {
+    min-width: 80px;
+    border: 0.1px solid lightgrey;
+    min-height: 20px;
+    line-height: 20px;
+    text-align: center;
+    outline: navajowhite;
+    /* overflow: auto; */
+}
+
+.col:focus {
+    box-sizing: border-box;
+    border: #1A73E8 solid 2px;
+}
+
+.left-col {
+    background: #F8F9FA;
+    display: grid;
+    grid-template-rows: repeat(100, 25px);
+    grid-template-columns: repeat(1, 30px);
+    width: 30px;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.left-col div {
+    padding: 2px;
+    border: 1px solid grey;
+    align-self: center;
+    height: 100%;
+}
+
+.grid_container {
+    height: calc(100vh - ( 80px + 30px + 40px));
+    overflow: scroll;
+    position: relative;
+}
+
+.grid {
+    display: grid;
+    grid-template-rows: repeat(100, 25px);
+    grid-template-columns: repeat(26, 80px);
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.grid .col {
+    text-align: center;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 16px;
+    position: relative;
+}
+
+.grid .col:focus::after {
+    content: " ";
+    background-color: #1A73E8;
+    position: absolute;
+    height: 8px;
+    width: 8px;
+    z-index: 10;
+    right: -5px;
+    bottom: -5px;
+}
+
+select option {
+    font-size: larger;
+}
+
+select option:nth-child(even) {
+    font-size: larger;
+    background-color: rgba(211, 211, 211, 0.13);
+}

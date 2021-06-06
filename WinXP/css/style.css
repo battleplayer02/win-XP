@@ -671,7 +671,7 @@ Menu Global
 
 .all__programs {
     position: absolute;
-    z-index: inherit;
+    z-index: 1;
     left: 100%;
     bottom: -1px;
     background-color: white;

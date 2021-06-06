@@ -10,14 +10,12 @@ let createTextDocument = document.getElementById("create_text_document");
 let desktopIcinsDiv = document.querySelector(".desktop__icons");
 let textDocumentDB = [];
 let textDocumentIcon = id => `<div class="icon" docID='${id}' ondblclick="docOpen(event)">
-                                <img src="./images/start_menu_images/wordpad.png" alt="">
-                                <div class="text">New Text Document (${id})</div>
+                                <img src="./images/desktop_icons/word.png" alt="">
+                                <div class="text">New Word Document (${id})</div>
                              </div>`
 let selectedIcon = document.querySelectorAll(".icon")[0];
 let menuContextDiv = document.querySelector(".context");
-let emptyDocument = document.querySelector(".wordpad")
-
-
+let emptyDocument = document.querySelector(".wordpad");
 
 
 
@@ -91,7 +89,7 @@ $(document).on("contextmenu", function (event) {
                                     </div>
                                     <hr>
                                     <div class="context__item" id="create_text_document" onclick="createIcon()">
-                                        New Text Document
+                                        New Word Document
                                     </div>
                                     <div class="context__item">
                                         New Folder
@@ -244,7 +242,8 @@ document.addEventListener("click", (e) => {
         }
         if (e.target.getAttribute("class") == "cls") {
             windowDivEle.classList.toggle("hidden")
-            if (e.target.classList.contains("wordpad")) {
+            if (windowDivEle.classList.contains("wordpad")) {
+                console.log(e.target.getAttribute("docid") + "docid in cls");
                 textDocumentDB[e.target.getAttribute("docid")] = document.richTextField;
             }
         }
@@ -330,17 +329,18 @@ $(".window").resizable({
  **********************************/
 let createIcon = () => {
     desktopIcinsDiv.innerHTML += textDocumentIcon(textDocumentDB.length)
-    textDocumentDB.push({
-        id: textDocumentDB.length,
-        name: `New Text Document (${textDocumentDB.length})`,
-        data: document.richTextField
-    });
+    textDocumentDB.push(document.richTextField.document.body);
     desktopIconSelect();
 }
 let docOpen = (event) => {
-    console.log(event);
+    // console.log(event);
+    if (event.target.closest(".icon")) {
+        console.log(event.target.closest(".icon"));
+    }
     emptyDocument.classList.toggle("hidden");
-    document.richTextField = textDocumentDB[event.target.getAttribute("docid")];
+    emptyDocument.setAttribute("docid", event.target.getAttribute("docid"))
+    console.log(event.target.getAttribute("docid"))
+    document.richTextField.document.body = textDocumentDB[event.target.closest(".icon").getAttribute("docid")];
     /*******************
      * Floating Window *
      *******************/
@@ -440,12 +440,30 @@ let openVSCode = (e) => {
 /*****************
  * Chrome Toggle *
  *****************/
-
 let openChrome = (e) => {
     document.querySelector(".chrome").classList.toggle("hidden")
 }
+
+
 /*****************
- * Chat Toggle *
+ * Excel Toggle *
+ *****************/
+
+let openExcel = (e) => {
+    document.querySelector(".exel").classList.toggle("hidden")
+}
+
+/*****************
+ * ChatCode Toggle *
+ *****************/
+
+let openChatCode = (e) => {
+    document.querySelector(".chatcode").classList.toggle("hidden")
+}
+
+
+/*****************
+ *  Chat Toggle  *
  *****************/
 
 let openChat = (e) => {
@@ -473,5 +491,10 @@ let openChat = (e) => {
     })
 }
 
+/**************
+ * Open Glitch
+ **************/
 
-
+let openGlitch = () => {
+    window.location.replace("./glitch");
+}

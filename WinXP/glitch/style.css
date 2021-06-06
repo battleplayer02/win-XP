@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: url(../xp_background.png) bottom left / cover no-repeat;
+  overflow: hidden;
+}
+
+.window {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 50vw;
+  user-select: none;
+}
+
+.window img {
+  width: 100%;
+}
+
+.window .bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2vw;
+  cursor: move;
+}
